@@ -2022,19 +2022,20 @@ class PDFWorker {
     }
   }
   static get _setupFakeWorkerGlobal() {
-    const loader = async () => {
-      const mainWorkerMessageHandler = this._mainThreadWorkerMessageHandler;
-      if (mainWorkerMessageHandler) {
-        return mainWorkerMessageHandler;
-      }
-      if (_is_node.isNodeJS && typeof require === "function") {
-        const worker = eval("require")(this.workerSrc);
-        return worker.WorkerMessageHandler;
-      }
-      await (0, _display_utils.loadScript)(this.workerSrc);
-      return window.pdfjsWorker.WorkerMessageHandler;
-    };
-    return (0, _util.shadow)(this, "_setupFakeWorkerGlobal", loader());
+	  return null;
+    // const loader = async () => {
+    //   const mainWorkerMessageHandler = this._mainThreadWorkerMessageHandler;
+    //   if (mainWorkerMessageHandler) {
+    //     return mainWorkerMessageHandler;
+    //   }
+    //   if (_is_node.isNodeJS && typeof require === "function") {
+    //     const worker = eval("require")(this.workerSrc);
+    //     return worker.WorkerMessageHandler;
+    //   }
+    //   await (0, _display_utils.loadScript)(this.workerSrc);
+    //   return window.pdfjsWorker.WorkerMessageHandler;
+    // };
+    // return (0, _util.shadow)(this, "_setupFakeWorkerGlobal", loader());
   }
 }
 exports.PDFWorker = PDFWorker;
